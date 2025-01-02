@@ -8,15 +8,13 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { loadData } from './states/profile.actions';
-import { TestComponent } from "./test/test.component";
-
+import { TestComponent } from './test/test.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    TestComponent
-],
+  imports: [TestComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -44,7 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.skills = profileData.profile[0].expertise || [];
           this.personalInfo = profileData.profile[0].personalInfo;
           this.projectsData = profileData.profile[0].projects;
-          
         } else {
           console.error('No profile data available');
           this.skills = [];

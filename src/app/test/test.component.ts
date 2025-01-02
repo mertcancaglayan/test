@@ -15,10 +15,11 @@ export class TestComponent implements OnInit {
   angularProjects: any[] = [];
 
   ngOnInit(): void {
+    console.log(this.projectsData);
+    
     if (this.projectsData) {
       this.angularProjects = this.projectsData['angularProjects'] || [];
       console.log(this.angularProjects);
-      
     }
   }
 }

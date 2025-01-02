@@ -8,11 +8,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = environment.apiUrl!;
+  private apiUrl = environment.supabase.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   getData(): Observable<ProfileData> {
+    console.log(this.apiUrl);
     return this.http.get<ProfileData>(this.apiUrl);
   }
 }

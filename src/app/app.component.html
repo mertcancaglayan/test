@@ -1,1 +1,2 @@
-<app-test [projectsData]="projectsData"></app-test>
+<app-test *ngIf="projectsData" [projectsData]="projectsData"></app-test>
+<p *ngIf="!projectsData">Loading projects...</p>
