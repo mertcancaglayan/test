@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -8,6 +8,7 @@ import { provideEffects } from '@ngrx/effects';
 import { profileReducer } from './states/profile.reducer';
 import { ProfileEffects } from './states/profile.effects';
 import { provideHttpClient } from '@angular/common/http';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,8 +16,9 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(),
     provideStore({
-      profile: profileReducer,
+        profile: profileReducer,
     }),
     provideEffects(ProfileEffects),
-  ],
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+],
 };
